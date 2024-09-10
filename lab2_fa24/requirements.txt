@@ -1,0 +1,5 @@
+numpy
+matplotlib
+otter-grader
+scipy
+pandas
