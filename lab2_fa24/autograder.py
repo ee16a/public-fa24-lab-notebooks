@@ -78,11 +78,11 @@ def test_Q3b(basic_detect_test):
 
 
 def test_Q3c(gaussian_noise_detect_test):
-    killers_fn, killers_confidence = gaussian_noise_detect_test(KILLERS_AG)
+    killers_fn, killers_confidence = gaussian_noise_detect_test(FS_AG, KILLERS_AG)
     assert killers_fn == 'MrBrightside.wav', 'killers was not identified'
     assert killers_confidence > 50, 'killers confidence is less than 50%'
 
-    coldplay_fn, coldplay_confidence = gaussian_noise_detect_test(COLDPLAY_AG)
+    coldplay_fn, coldplay_confidence = gaussian_noise_detect_test(FS_AG, COLDPLAY_AG)
     assert coldplay_fn == 'VivaLaVida.wav', 'coldplay was not identified'
     assert coldplay_confidence > 50, 'coldplay confidence is less than 50%'
 
