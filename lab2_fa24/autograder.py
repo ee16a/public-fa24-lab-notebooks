@@ -9,6 +9,7 @@ EPSILON_DB_CONSTANT = 1e-12
 
 
 def test_Q1a(centered_magnitude_spectrum):
+    assert isinstance(centered_magnitude_spectrum(np.ones(10)), np.ndarray), 'function returned data of a type that is not np.ndarray'
     assert np.allclose(centered_magnitude_spectrum(np.ones(10)), np.array([ 0.,  0.,  0.,  0.,  0., 10.,  0.,  0.,  0.,  0.]))
     assert np.allclose(centered_magnitude_spectrum([10] * 5 + [6 * 2] + [3] * 4), np.array([ 2.,  9.,  5.46491887,  9., 21.6364198, 74., 21.6364198,  9.,  5.46491887,  9.]))
     x = np.array([0.77498361, 0.02466649, 0.5159193 , 0.75489558, 0.85777587, 0.56253859, 0.01691631, 0.65058933, 0.4358812, 0.80630942])
@@ -44,6 +45,8 @@ def test_Q1c(compute_spectrogram):
 
 
 def test_Q2a(freq_idx, time_idx):
+    assert isinstance(freq_idx, np.ndarray), 'freq_idx has a type that is not np.ndarray'
+    assert isinstance(time_idx, np.ndarray), 'time_idx has a type that is not np.ndarray'
     assert np.allclose(freq_idx[10:20], np.array([20, 22, 22, 24, 27, 40, 40, 45, 45, 53]))
     assert np.allclose(time_idx[30:40], np.array([132, 597, 784, 311, 421, 454, 357, 637, 271, 245]))
 
@@ -51,6 +54,7 @@ def test_Q2a(freq_idx, time_idx):
 
 
 def test_Q2b(fingerprint):
+    assert isinstance(fingerprint(FS_AG, COLDPLAY_AG), list), 'fingerprint returned data of a type that is not list'
     assert np.allclose([pr[1] for pr in fingerprint(FS_AG, COLDPLAY_AG)[100:120]], [3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667])
     assert np.allclose([pr[1] for pr in fingerprint(FS_AG, COLDPLAY_AG, neighborhood_size=21)[100:120]], [0.864, 0.864, 0.864, 0.864, 0.864, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334, 1.2373333333333334])
     assert np.allclose([pr[1] for pr in fingerprint(FS_AG, COLDPLAY_AG, amp_thresh=25)[100:120]], [3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 3.8506666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667, 4.746666666666667])
@@ -60,6 +64,7 @@ def test_Q2b(fingerprint):
 
 def test_Q3a(get_20_second_segment):
     coldplay_20 = get_20_second_segment(FS_AG, COLDPLAY_AG)
+    assert isinstance(coldplay_20, np.ndarray), 'function returned a type that was not np.ndarray'
     assert len(coldplay_20) == (20 * FS_AG), 'coldplay segment was not 20 seconds'
     assert np.isin(coldplay_20, COLDPLAY_AG).any(), 'coldplay segment content was not contained within coldplay audio'
 
@@ -71,6 +76,7 @@ def test_Q3a(get_20_second_segment):
 
 
 def test_Q3b(basic_detect_test):
+    assert isinstance(basic_detect_test(FS_AG, KILLERS_AG), tuple), 'basic_detect_test returned a type that was not tuple'
     assert basic_detect_test(FS_AG, KILLERS_AG) == ('MrBrightside.wav', 100.0), 'killers was not identified or confidence was not 100%'
     assert basic_detect_test(FS_AG, COLDPLAY_AG) == ('VivaLaVida.wav', 100.0), 'coldplay was not identified or confidence was not 100%'
 

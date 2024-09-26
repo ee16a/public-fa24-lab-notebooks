@@ -13,8 +13,8 @@ def generate_hash(f1, f2, t1, t2, hash_length = 20):
     return h.hexdigest()[0:hash_length], t1
 
 
-def hashing(t1, f1, time_idx, freq_idx):
-    times, freqs = t1[time_idx], f1[freq_idx]
+def hashing(f1, t1, freq_indices, time_indices):
+    freqs, times = f1[freq_indices], t1[time_indices]
     sorted_peaks = sorted(zip(freqs, times), key=lambda x: x[1])
     hashes = []
 
