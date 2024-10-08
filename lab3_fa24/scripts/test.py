@@ -16,7 +16,7 @@ def test1b_H_alt(H_alt):
 def test_masks_img2(H, H_Alt):
 
     errors = False
-    if H.shape != (30*50, 30*50):
+    if H.shape != (30*40, 30*40):
         errors = True
         print('H shape is incorrect: H.shape = {}'.format(H.shape))
     try:
@@ -25,7 +25,7 @@ def test_masks_img2(H, H_Alt):
         errors = True
         print('H is not invertible')
 
-    if H_Alt.shape != (30*50, 30*50):
+    if H_Alt.shape != (30*40, 30*40):
         errors = True
         print('H_Alt shape is incorrect: H_Alt.shape = {}'.format(H_Alt.shape))
     try:

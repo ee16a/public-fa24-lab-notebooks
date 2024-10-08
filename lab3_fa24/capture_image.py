@@ -154,7 +154,7 @@ def read_sensor(ser, mask, brightness):
 
 
 def scan(H, multi_pixel, width, height, brightness=None):
-    shape = (width, height)
+    shape = (height, width)
     create_screen()
     with connect_arduino() as ser:
         if multi_pixel:
